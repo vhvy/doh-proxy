@@ -4,7 +4,13 @@ const jsonContentType = "application/dns-json";
 
 const emptyContent = "Not Found";
 const emptyLength = new TextEncoder().encode(emptyContent).length;
-const emptyRes = () => new Response(emptyContent, { status: 404, headers: { "Content-Length": emptyLength.toString() } });
+const emptyRes = (request: Request) => new Response(emptyContent, {
+  status: 404,
+  headers: {
+    "Content-Length": emptyLength.toString(),
+    "X-Request-Ip": request.headers.get("x-real-ip") || ""
+  }
+});
 
 const getUrlParams = (url: string) => {
   return new URL(url).searchParams;
@@ -30,7 +36,7 @@ export async function GET(request: Request) {
     });
   }
 
-  return res ?? emptyRes();
+  return res ?? emptyRes(request);
 }
 
 export async function POST(request: Request) {
@@ -47,5 +53,5 @@ export async function POST(request: Request) {
     });
   }
 
-  return emptyRes();
+  return emptyRes(request);
 }
