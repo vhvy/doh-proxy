@@ -1,0 +1,20 @@
+{
+  "name": "doh-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "pnpm exec vercel dev --listen 47389"
+  },
+  "keywords": [],
+  "author": "vhvy",
+  "license": "MIT",
+  "packageManager": "pnpm@10.5.2",
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@vercel/node": "^5.1.14",
+    "typescript": "^5.8.3",
+    "vercel": "^41.5.0"
+  }
+}

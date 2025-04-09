@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/dns-query",
+      "destination": "/api/doh"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/api/catch"
+    }
+  ]
+}
